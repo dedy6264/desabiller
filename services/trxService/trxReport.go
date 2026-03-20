@@ -104,10 +104,17 @@ func (svc trxService) TrxBillerReports(ctx echo.Context) error {
 		respSvc.Data = []models.RespGetTrx{}
 	}
 	respSvc.RecordsTotal = count
-	respSvc.RecordsFiltered = len(respInqTrx)
-	respSvc.Draw = 1
-	result := helpers.ResponseJSON(configs.TRUE_VALUE, configs.SUCCESS_CODE, configs.SUCCESS_MSG, configs.SUCCESS_MSG, respSvc)
+	respSvc.RecordsFiltered = count
+	result := helpers.ResponseJSON(configs.TRUE_VALUE,
+		configs.RC_SUCCESS[0], configs.RC_SUCCESS[1], configs.RC_SUCCESS[1],
+		respSvc)
 	return ctx.JSON(http.StatusOK, result)
+
+	// respSvc.RecordsTotal = count
+	// respSvc.RecordsFiltered = len(respInqTrx)
+	// respSvc.Draw = 1
+	// result := helpers.ResponseJSON(configs.TRUE_VALUE, configs.SUCCESS_CODE, configs.SUCCESS_MSG, configs.SUCCESS_MSG, respSvc)
+	// return ctx.JSON(http.StatusOK, result)
 }
 func (svc trxService) TrxBillerReport(ctx echo.Context) error {
 	var (

@@ -136,7 +136,7 @@ join saving_types as b on a.saving_type_id=b.id where true `
 		if req.Order != "" {
 			query += `  order by '` + req.Order + `' asc`
 		} else {
-			query += `  order by cif_name asc`
+			query += `  order by a.saving_segment_name asc`
 		}
 	}
 	rows, err := ctx.repo.Db.Query(query)

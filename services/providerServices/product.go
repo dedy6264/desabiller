@@ -6,6 +6,8 @@ import (
 	"desabiller/helpers"
 	"desabiller/models"
 	"desabiller/utils"
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 	"time"
@@ -26,6 +28,8 @@ func (svc providerServices) AddProduct(ctx echo.Context) error {
 		result := helpers.ResponseJSON(configs.FALSE_VALUE, configs.VALIDATE_ERROR_CODE, "Failed", err.Error(), nil)
 		return ctx.JSON(http.StatusOK, result)
 	}
+	s, _ := json.Marshal(req.Filter)
+	fmt.Println("----->", string(s))
 	if req.Filter.ProductName == "" {
 		utils.Log("", svcName, nil)
 		result := helpers.ResponseJSON(configs.FALSE_VALUE,

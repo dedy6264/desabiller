@@ -64,6 +64,7 @@ func (svc savingServices) AddCif(ctx echo.Context) error {
 		return ctx.JSON(http.StatusOK, result)
 	}
 	req.Filter.CifName = strings.ToUpper(req.Filter.CifName)
+	req.Filter.CifIDIndex = strings.ToUpper(req.Filter.CifNoID + req.Filter.CifName)
 	req.Filter.CreatedAt = dbTime
 	req.Filter.UpdatedAt = dbTime
 	req.Filter.CreatedBy = "sys"

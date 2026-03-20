@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"desabiller/models"
 	"desabiller/utils"
+	"fmt"
 	"strconv"
 )
 
@@ -302,6 +303,7 @@ func (ctx trxRepository) GetTrxs(req models.ReqGetTransaction) (result []models.
 			query += `  order by id asc`
 		}
 	}
+	fmt.Println("Query GetTrxs: ", query, req.Lenght)
 	rows, err := ctx.repo.Db.Query(query)
 	if err != nil {
 		return result, err

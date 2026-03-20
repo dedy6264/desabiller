@@ -215,8 +215,8 @@ func SavingTransactionDataRow(rows *sql.Rows) (result []models.SavingTransaction
 		var val models.SavingTransaction
 		err := rows.Scan(
 			&val.ID,
-			&val.ReferenceNumber, &val.ReferenceNumber, &val.ReferenceNumberPartner, &val.DcType,
-			&val.TransactionAmount, &val.TransactionCode, &val.AccountID, &val.AccountNumber,
+			&val.ReferenceNumber, &val.ReferenceNumberPartner, &val.DcType,
+			&val.TransactionAmount, &val.TransactionCode, &val.AccountID, &val.AccountNumber, &val.LastBalance,
 			&val.CreatedAt,
 			&val.CreatedBy,
 			&val.UpdatedAt,

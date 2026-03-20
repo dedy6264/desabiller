@@ -141,9 +141,9 @@ func PassEncrypt(pswrd string) (result string, err error) {
 	}
 	return string(hashedPassword), nil
 }
-func PassCheck(reqpswrd string, pssword string) error {
-	err := bcrypt.CompareHashAndPassword([]byte(reqpswrd), []byte(pssword))
-	fmt.Println("::::::CHECK", reqpswrd, pssword)
+func PassCheck(savedpassword string, inputpassword string) error {
+	err := bcrypt.CompareHashAndPassword([]byte(savedpassword), []byte(inputpassword))
+	fmt.Println("::::::CHECK", savedpassword, inputpassword)
 	fmt.Println("::::::CHECK", err)
 	return err
 }

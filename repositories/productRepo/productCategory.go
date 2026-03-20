@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"desabiller/models"
 	"desabiller/utils"
+	"fmt"
 	"strconv"
 )
 
@@ -78,6 +79,7 @@ func (ctx product) UpdateProductCategory(req models.ReqGetProductCategory) (resu
 	where id = ? returning id
 	`
 	query = utils.QuerySupport(query)
+	fmt.Println(query, req.Filter.ProductCategoryName, req.Filter.UpdatedAt, req.Filter.UpdatedBy, req.Filter.ID)
 	_, err = ctx.repo.Db.Exec(query, req.Filter.ProductCategoryName, req.Filter.UpdatedAt, req.Filter.UpdatedBy, req.Filter.ID)
 	if err != nil {
 		return result, err

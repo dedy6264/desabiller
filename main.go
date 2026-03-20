@@ -9,6 +9,7 @@ import (
 	"desabiller/routes"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -48,6 +49,13 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 }
 
 func main() {
+	a, _ := helpers.PswEnc("password")
+	fmt.Println("A::", a)
+	err := helpers.PassCheck("$2a$10$xPU2rbED4gDxizPb4SR8nek4LU8ktAZVS5oN3b7nX.5eTWTRAr2N6", "$2a$10$xPU2rbED4gDxizPb4SR8nek4LU8ktAZVS5oN3b7nX.5eTWTRAr2N6")
+	if err != nil {
+		log.Println(" WRONG PIN ", err)
+
+	}
 	helpers.TokenMakarios()
 	if err := configs.OpenConnection(); err != nil {
 		panic(fmt.Sprintf("Open Connection Faild: %s", err.Error()))
